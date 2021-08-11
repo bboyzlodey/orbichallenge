@@ -1,0 +1,2 @@
+rootProject.name = "ORBI Challenge"
+include ':app'
