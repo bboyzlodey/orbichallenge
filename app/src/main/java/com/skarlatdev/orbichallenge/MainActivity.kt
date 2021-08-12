@@ -1,17 +1,22 @@
 package com.skarlatdev.orbichallenge
 
 import android.os.Bundle
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
+import dagger.hilt.android.AndroidEntryPoint
 import me.aartikov.sesame.navigation.NavigationMessage
 import me.aartikov.sesame.navigation.NavigationMessageDispatcher
 import me.aartikov.sesame.navigation.NavigationMessageHandler
+import me.aartikov.sesame.navigation.bind
 import timber.log.Timber
 import javax.inject.Inject
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity(), NavigationMessageHandler {
 
     private val navController by lazy { findNavController(R.id.nav_host) }
+    private val viewModel : MainViewModel by viewModels()
 
     @Inject
     lateinit var navigationDispatcher: NavigationMessageDispatcher
@@ -19,6 +24,7 @@ class MainActivity : AppCompatActivity(), NavigationMessageHandler {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        viewModel.navigationMessageQueue.bind(navigationDispatcher, this, this)
     }
 
     override fun handleNavigationMessage(message: NavigationMessage): Boolean {
