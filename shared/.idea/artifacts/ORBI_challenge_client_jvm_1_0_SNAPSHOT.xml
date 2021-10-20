@@ -1,8 +1,6 @@
 <component name="ArtifactManager">
   <artifact type="jar" name="ORBI_challenge_client-jvm-1.0-SNAPSHOT">
     <output-path>$PROJECT_DIR$/build/libs</output-path>
-    <root id="archive" name="ORBI_challenge_client-jvm-1.0-SNAPSHOT.jar">
-      <element id="module-output" name="ORBI_challenge_client.jvmMain" />
-    </root>
+    <root id="archive" name="ORBI_challenge_client-jvm-1.0-SNAPSHOT.jar" />
   </artifact>
 </component>

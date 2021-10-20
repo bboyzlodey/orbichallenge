@@ -7,23 +7,23 @@ import data.models.StepRecord
 
 interface ServerApi {
 
-    fun getStepRecords(): List<StepRecord>
+    suspend fun getStepRecords(): List<StepRecord>
 
-    fun getChallenges(): List<Challenge>
+    suspend fun getChallenges(): List<Challenge>
 
-    fun getProfile(): Profile
+    suspend fun getProfile(): Profile
 
-    fun getAntropometricInfo(): AntropometricInfo
+    suspend fun getAntropometricInfo(): AntropometricInfo
 
-    fun sendStepRecord(body: StepRecord): Any?
+    suspend fun sendStepRecord(body: StepRecord): Any?
 
-    fun sendStepRecords(body: List<StepRecord>): Any?
+    suspend fun sendStepRecords(body: List<StepRecord>): Any?
 
-    fun setAntropometricInfo(body: AntropometricInfo): Any?
+    suspend fun setAntropometricInfo(body: AntropometricInfo): Any?
 
-    fun updateProfile(body: Profile): Any?
+    suspend fun updateProfile(body: Profile): Any?
 
-    fun logout(): Any?
+    suspend fun logout(): Any?
 
-    fun signInWithGoogle(): Any?
+    suspend fun signInWithGoogle(): Any?
 }

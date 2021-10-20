@@ -22,13 +22,6 @@ kotlin {
             useJUnit()
         }
     }
-    js(LEGACY) {
-        browser {
-            commonWebpackConfig {
-                cssSupport.enabled = true
-            }
-        }
-    }
     val hostOs = System.getProperty("os.name")
     val isMingwX64 = hostOs.startsWith("Windows")
     val nativeTarget = when {
@@ -38,24 +31,36 @@ kotlin {
         else -> throw GradleException("Host OS is not supported in Kotlin/Native.")
     }
 
+    val ktor_version = "1.6.4"
 
     sourceSets {
         val commonMain by getting {
             dependencies {
                 implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.0")
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2")
+                implementation("io.ktor:ktor-client-core:1.6.4")
+                implementation ("io.ktor:ktor-client-serialization:$ktor_version")
             }
         }
+
         val commonTest by getting {
             dependencies {
                 implementation(kotlin("test"))
             }
         }
-        val jvmMain by getting
+        val jvmMain by getting {
+            dependencies {
+                implementation("io.ktor:ktor-client-cio:1.6.4")
+                implementation ("io.ktor:ktor-client-gson:$ktor_version")
+
+            }
+        }
         val jvmTest by getting
-        val jsMain by getting
-        val jsTest by getting
-        val nativeMain by getting
+        val nativeMain by getting {
+            dependencies {
+                implementation("io.ktor:ktor-client-curl:$ktor_version")
+            }
+        }
         val nativeTest by getting
     }
 }
