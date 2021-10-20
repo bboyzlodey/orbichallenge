@@ -32,6 +32,7 @@ kotlin {
     }
 
     val ktor_version = "1.6.4"
+    val serialization_version = "1.3.0"
 
     sourceSets {
         val commonMain by getting {
@@ -39,7 +40,8 @@ kotlin {
                 implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.0")
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2")
                 implementation("io.ktor:ktor-client-core:1.6.4")
-                implementation ("io.ktor:ktor-client-serialization:$ktor_version")
+                implementation("io.ktor:ktor-client-serialization:$ktor_version")
+                implementation("io.ktor:ktor-client-logging:$ktor_version")
             }
         }
 
@@ -51,13 +53,13 @@ kotlin {
         val jvmMain by getting {
             dependencies {
                 implementation("io.ktor:ktor-client-cio:1.6.4")
-                implementation ("io.ktor:ktor-client-gson:$ktor_version")
-
+                implementation("io.ktor:ktor-client-gson:$ktor_version")
             }
         }
         val jvmTest by getting
         val nativeMain by getting {
             dependencies {
+                implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:$serialization_version")
                 implementation("io.ktor:ktor-client-curl:$ktor_version")
             }
         }

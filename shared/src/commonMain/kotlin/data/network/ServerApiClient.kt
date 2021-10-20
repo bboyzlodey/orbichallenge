@@ -8,6 +8,7 @@ import io.ktor.client.*
 import io.ktor.client.engine.*
 import io.ktor.client.features.json.*
 import io.ktor.client.features.json.serializer.*
+import io.ktor.client.features.logging.*
 import io.ktor.client.request.*
 import io.ktor.http.*
 
@@ -15,9 +16,14 @@ class ServerApiClient : ServerApi {
 
     private val client = HttpClient() {
         install(JsonFeature) {
+            acceptContentTypes = listOf(ContentType.Application.Json)
             serializer = KotlinxSerializer()
         }
-        engine { proxy = ProxyBuilder.http("localhost:8080") }
+        install(Logging) {
+            logger = Logger.SIMPLE
+            level = LogLevel.BODY
+        }
+        engine { proxy = ProxyBuilder.http("http://localhost:8080") }
     }
 
     override suspend fun getStepRecords(): List<StepRecord> {
