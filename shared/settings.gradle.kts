@@ -1,3 +1,3 @@
 
-rootProject.name = "ORBI_challenge_client"
+rootProject.name = "shared"
 

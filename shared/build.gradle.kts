@@ -2,8 +2,8 @@ import org.jetbrains.kotlin.fir.declarations.builder.buildField
 import org.jetbrains.kotlin.ir.backend.js.compile
 
 plugins {
-    kotlin("multiplatform") version "1.5.31"
-    kotlin("plugin.serialization") version "1.5.31"
+    kotlin("multiplatform") /*version "1.5.31"*/
+    kotlin("plugin.serialization") /*version "1.5.31"*/
 }
 
 group = "me.denis"
