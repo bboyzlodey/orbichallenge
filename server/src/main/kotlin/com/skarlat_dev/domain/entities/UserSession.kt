@@ -1,4 +1,4 @@
-package com.skarlat_dev.models
+package com.skarlat_dev.domain.entities
 
 import kotlinx.serialization.Serializable
 

@@ -1,18 +1,15 @@
 package com.skarlat_dev.plugins
 
 import io.ktor.auth.*
-import io.ktor.util.*
 import io.ktor.auth.jwt.*
 import com.auth0.jwt.JWT
 import com.auth0.jwt.algorithms.Algorithm
-import com.skarlat_dev.models.UserSession
+import com.skarlat_dev.domain.entities.UserSession
 import io.ktor.client.*
 import io.ktor.client.engine.apache.*
-import io.ktor.locations.*
 import io.ktor.http.*
 import io.ktor.application.*
 import io.ktor.response.*
-import io.ktor.request.*
 import io.ktor.routing.*
 import io.ktor.sessions.*
 

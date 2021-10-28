@@ -1,6 +1,6 @@
 package com.skarlat_dev.domain.converters
 
-import com.skarlat_dev.domain.models.ChallengeEntity
+import com.skarlat_dev.domain.entities.ChallengeEntity
 import data.models.Challenge
 
 class ChallengeConverter {
