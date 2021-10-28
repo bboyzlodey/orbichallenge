@@ -1,36 +1,40 @@
 package com.skarlat_dev.plugins
 
+import com.skarlat_dev.domain.repository.ChallengeRepository
+import com.skarlat_dev.domain.repository.IChallengesRepository
+import com.skarlat_dev.domain.repository.MockChallengeRepository
+import com.skarlat_dev.utils.MockHelper
 import io.ktor.routing.*
 import io.ktor.locations.*
 import io.ktor.application.*
+import io.ktor.http.*
 import io.ktor.response.*
+import kotlinx.serialization.json.Json
+import kotlinx.serialization.json.JsonElement
+import kotlinx.serialization.json.JsonObject
+import utils.Const
 
 fun Application.configureRouting() {
-    install(Locations) {
-    }
 
     routing {
-        get("/") {
-                call.respondText("Hello World!")
-            }
-        get<MyLocation> {
-                call.respondText("Location: name=${it.name}, arg1=${it.arg1}, arg2=${it.arg2}")
-            }
-            // Register nested routes
-            get<Type.Edit> {
-                call.respondText("Inside $it")
-            }
-            get<Type.List> {
-                call.respondText("Inside $it")
-            }
+        getChallenges()
+        getProfile()
+        getAntropometricInfo()
     }
 }
-@Location("/location/{name}")
-class MyLocation(val name: String, val arg1: Int = 42, val arg2: String = "default")
-@Location("/type/{name}") data class Type(val name: String) {
-    @Location("/edit")
-    data class Edit(val type: Type)
 
-    @Location("/list/{page}")
-    data class List(val type: Type, val page: Int)
+
+fun Routing.getChallenges(): Route = get(Const.GET_CHALLENGES_POINT) {
+    val repository: IChallengesRepository = ChallengeRepository()
+    call.respond(status = HttpStatusCode.OK, message = repository.getChallenges())
+}
+
+fun Routing.getProfile(): Route = get(Const.GET_PROFILE_POINT) {
+    val response = MockHelper.getProfile()
+    call.respond(status = HttpStatusCode.OK, message = response)
+}
+
+fun Routing.getAntropometricInfo(): Route = get(Const.GET_ANTROPOMETRIC_INFO_POINT) {
+    val response = MockHelper.getAntropometricInfo()
+    call.respond(status = HttpStatusCode.OK, message = response)
 }
