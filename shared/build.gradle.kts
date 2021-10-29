@@ -2,8 +2,8 @@ import org.jetbrains.kotlin.fir.declarations.builder.buildField
 import org.jetbrains.kotlin.ir.backend.js.compile
 
 plugins {
-    kotlin("multiplatform") /*version "1.5.31"*/
-    kotlin("plugin.serialization") /*version "1.5.31"*/
+    kotlin("multiplatform") //version "1.5.31"
+    kotlin("plugin.serialization") //version "1.5.31"
 }
 
 group = "me.denis"
@@ -37,6 +37,7 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
+                implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.3.1")
                 implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.3.0")
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2")
                 implementation("io.ktor:ktor-client-core:1.6.4")
