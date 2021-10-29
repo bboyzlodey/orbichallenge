@@ -1,3 +1,5 @@
+import java.util.regex.Pattern.compile
+
 val ktor_version: String by project
 val kotlin_version: String by project
 val logback_version: String by project
@@ -19,6 +21,9 @@ repositories {
 }
 
 dependencies {
+    // Driver for MariaDB connections
+    compile("mysql:mysql-connector-java:8.0.25")
+
     implementation("io.ktor:ktor-server-core:$ktor_version")
     implementation("io.ktor:ktor-serialization:$ktor_version")
     implementation("io.ktor:ktor-metrics:$ktor_version")
@@ -33,4 +38,10 @@ dependencies {
     implementation(project(":shared"))
     testImplementation("io.ktor:ktor-server-tests:$ktor_version")
     testImplementation("org.jetbrains.kotlin:kotlin-test:$kotlin_version")
+
+    // Facade for db access
+    val exposedVersion: String by project
+    implementation("org.jetbrains.exposed:exposed-core:$exposedVersion")
+    implementation("org.jetbrains.exposed:exposed-dao:$exposedVersion")
+    implementation("org.jetbrains.exposed:exposed-jdbc:$exposedVersion")
 }
