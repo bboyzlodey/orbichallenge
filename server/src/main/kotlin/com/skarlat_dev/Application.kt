@@ -1,5 +1,6 @@
 package com.skarlat_dev
 
+import com.skarlat_dev.domain.storage.MariaDB
 import io.ktor.server.engine.*
 import io.ktor.server.netty.*
 import com.skarlat_dev.plugins.*
@@ -10,6 +11,7 @@ fun main() {
         configureSerialization()
         configureMonitoring()
         configureHTTP()
+        MariaDB().connect()
 //        configureSecurity()
     }.start(wait = true)
 }

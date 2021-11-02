@@ -22,7 +22,7 @@ repositories {
 
 dependencies {
     // Driver for MariaDB connections
-    compile("mysql:mysql-connector-java:8.0.25")
+    implementation("mysql:mysql-connector-java:8.0.25")
 
     implementation("io.ktor:ktor-server-core:$ktor_version")
     implementation("io.ktor:ktor-serialization:$ktor_version")
