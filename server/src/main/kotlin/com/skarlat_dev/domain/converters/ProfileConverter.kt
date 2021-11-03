@@ -1,13 +1,11 @@
 package com.skarlat_dev.domain.converters
 
 import com.skarlat_dev.domain.entities.ProfileEntity
-import com.skarlat_dev.domain.entities.StepRecordEntity
 import data.models.Profile
-import data.models.StepRecord
-import java.util.*
+import io.netty.util.Mapping
 
-class ProfileConverter {
-    fun toNetworkModel(entity: ProfileEntity): Profile =
+class ProfileConverter : IProfileConverter {
+    private fun toNetworkModel(entity: ProfileEntity): Profile =
         Profile(
             firstName = entity.firstName,
             secondName = entity.secondName,
@@ -15,7 +13,7 @@ class ProfileConverter {
             email = entity.birthday
         )
 
-    fun toEntity(networkModel: Profile): ProfileEntity =
+    private fun toEntity(networkModel: Profile): ProfileEntity =
         ProfileEntity(
             id = "",
             firstName = networkModel.firstName,
@@ -23,4 +21,10 @@ class ProfileConverter {
             birthday = networkModel.birthday,
             email = networkModel.email
         )
+
+    override val fromEntityToNetwork: Mapping<ProfileEntity, Profile> =
+        Mapping { entity -> toNetworkModel(entity) }
+
+    override val fromNetworkToEntity: Mapping<Profile, ProfileEntity> =
+        Mapping { network -> toEntity(network) }
 }

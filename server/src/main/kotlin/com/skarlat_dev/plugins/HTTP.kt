@@ -1,7 +1,7 @@
 package com.skarlat_dev.plugins
 
-import io.ktor.features.*
 import io.ktor.application.*
+import io.ktor.features.*
 
 fun Application.configureHTTP() {
     install(DefaultHeaders) {

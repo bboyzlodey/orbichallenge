@@ -15,7 +15,7 @@ import utils.Const
 
 class ServerApiClient : ServerApi {
 
-    private val client = HttpClient() {
+    private val client = HttpClient {
         install(JsonFeature) {
             acceptContentTypes = listOf(ContentType.Application.Json)
             serializer = KotlinxSerializer()

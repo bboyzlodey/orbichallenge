@@ -2,16 +2,11 @@ package com.skarlat_dev.plugins
 
 import com.skarlat_dev.domain.repository.ChallengeRepository
 import com.skarlat_dev.domain.repository.IChallengesRepository
-import com.skarlat_dev.domain.repository.MockChallengeRepository
 import com.skarlat_dev.utils.MockHelper
-import io.ktor.routing.*
-import io.ktor.locations.*
 import io.ktor.application.*
 import io.ktor.http.*
 import io.ktor.response.*
-import kotlinx.serialization.json.Json
-import kotlinx.serialization.json.JsonElement
-import kotlinx.serialization.json.JsonObject
+import io.ktor.routing.*
 import utils.Const
 
 fun Application.configureRouting() {

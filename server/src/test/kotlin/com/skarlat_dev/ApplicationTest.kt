@@ -1,9 +1,10 @@
 package com.skarlat_dev
 
+import com.skarlat_dev.plugins.configureRouting
 import io.ktor.http.*
-import kotlin.test.*
 import io.ktor.server.testing.*
-import com.skarlat_dev.plugins.*
+import kotlin.test.Test
+import kotlin.test.assertEquals
 
 class ApplicationTest {
     @Test
