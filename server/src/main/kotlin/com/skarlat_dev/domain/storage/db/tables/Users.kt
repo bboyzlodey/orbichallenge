@@ -8,6 +8,6 @@ object Users : Table("users") {
     val firstName = varchar("firstName", 30)
     val secondName = varchar("secondName", 30)
     val email = varchar("email", 30)
-    val birthday = this.varchar("birthday", Const.BIRTHDAY_SERVER_FORMAT.length)
+    val birthday = this.varchar("birthday", Const.DATE_SERVER_FORMAT.length)
     override val primaryKey: PrimaryKey = PrimaryKey(id, name = "PK_user_id")
 }

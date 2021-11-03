@@ -17,6 +17,6 @@ object Const {
     const val LOGOUT_POINT = "/logout"
     const val SIGN_IN_WITH_GOOGLE_POINT = "/signInWithGoogle"
 
-    const val BIRTHDAY_SERVER_FORMAT = "DD-MM-YYYY"
+    const val DATE_SERVER_FORMAT = "DD-MM-YYYY"
 
 }
