@@ -1,6 +1,6 @@
 package com.skarlat_dev
 
-import com.skarlat_dev.domain.storage.MariaDB
+import com.skarlat_dev.domain.storage.db.MariaDB
 import io.ktor.server.engine.*
 import io.ktor.server.netty.*
 import com.skarlat_dev.plugins.*

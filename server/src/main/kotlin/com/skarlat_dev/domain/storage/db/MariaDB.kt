@@ -1,5 +1,6 @@
-package com.skarlat_dev.domain.storage
+package com.skarlat_dev.domain.storage.db
 
+import com.skarlat_dev.domain.storage.IDatabase
 import org.jetbrains.exposed.sql.Database
 
 class MariaDB : IDatabase {
