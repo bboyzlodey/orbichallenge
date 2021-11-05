@@ -1,7 +1,8 @@
 package com.skarlat_dev.domain.repository
 
+import com.skarlat_dev.domain.entities.ChallengeEntity
 import data.models.Challenge
 
 interface IChallengesRepository {
-    suspend fun getChallenges() : List<Challenge>
+    suspend fun getChallenges() : List<ChallengeEntity>
 }

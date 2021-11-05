@@ -1,5 +1,6 @@
 package com.skarlat_dev.plugins
 
+import com.skarlat_dev.domain.converters.ChallengeConverter
 import com.skarlat_dev.domain.repository.ChallengeRepository
 import com.skarlat_dev.domain.repository.IChallengesRepository
 import com.skarlat_dev.utils.MockHelper
@@ -21,7 +22,9 @@ fun Application.configureRouting() {
 
 fun Routing.getChallenges(): Route = get(Const.GET_CHALLENGES_POINT) {
     val repository: IChallengesRepository = ChallengeRepository()
-    call.respond(status = HttpStatusCode.OK, message = repository.getChallenges())
+    val challenges = repository.getChallenges()
+    val converter = ChallengeConverter
+    call.respond(status = HttpStatusCode.OK, message = challenges.map(converter::toNetworkModel))
 }
 
 fun Routing.getProfile(): Route = get(Const.GET_PROFILE_POINT) {

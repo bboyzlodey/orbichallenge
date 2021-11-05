@@ -1,12 +1,13 @@
 package com.skarlat_dev.utils
 
+import com.skarlat_dev.domain.entities.ChallengeEntity
 import data.models.*
 
 object MockHelper {
     fun getChallenges() = listOf(
-        Challenge(id = "1", title = "Приветствие", "Добро пожаловать в ОРБИ Челлендж!"),
-        Challenge(id = "2", title = "Бег", "Легкий бег помогает быть здоровым"),
-        Challenge(id = "3", title = "Шаги", "Беговые шаги"),
+        ChallengeEntity(id = "1", title = "Приветствие", "Добро пожаловать в ОРБИ Челлендж!"),
+        ChallengeEntity(id = "2", title = "Бег", "Легкий бег помогает быть здоровым"),
+        ChallengeEntity(id = "3", title = "Шаги", "Беговые шаги"),
     )
 
     fun getProfile() =
