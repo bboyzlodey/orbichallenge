@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">ORBI Challenge</string>
+	<string name="sign_in_google">Продолжить с Google</string>
+	<string name="sign_in">Авторизуйтесь</string>
+	<string name="antropometric_data">Антропометрические данные</string>
+	<string name="human_height">Рост</string>
+	<string name="human_weight">Вес</string>
+	<string name="human_sex">Пол</string>
 </resources>
