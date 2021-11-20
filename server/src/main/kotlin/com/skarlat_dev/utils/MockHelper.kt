@@ -1,7 +1,10 @@
 package com.skarlat_dev.utils
 
 import com.skarlat_dev.domain.entities.ChallengeEntity
-import data.models.*
+import data.models.AntropometricInfo
+import data.models.Profile
+import data.models.Sex
+import data.models.StepRecord
 
 object MockHelper {
     fun getChallenges() = listOf(

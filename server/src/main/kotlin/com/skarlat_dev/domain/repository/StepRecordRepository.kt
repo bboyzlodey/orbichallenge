@@ -2,7 +2,10 @@ package com.skarlat_dev.domain.repository
 
 import com.skarlat_dev.domain.entities.StepRecordEntity
 import com.skarlat_dev.domain.storage.db.tables.StepRecords
-import org.jetbrains.exposed.sql.*
+import org.jetbrains.exposed.sql.and
+import org.jetbrains.exposed.sql.insert
+import org.jetbrains.exposed.sql.replace
+import org.jetbrains.exposed.sql.select
 import org.jetbrains.exposed.sql.transactions.transaction
 
 class StepRecordRepository : IStepRecordRepository {

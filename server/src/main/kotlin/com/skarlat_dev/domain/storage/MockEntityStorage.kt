@@ -20,5 +20,5 @@ class MockEntityStorage : EntityStorage {
 
     override fun updateProfile(profile: ProfileEntity) {}
     override fun createProfile(profile: ProfileEntity) {}
-    override fun setAntropometricInfo(antropometricInfo: AntropometricInfoEntity){}
+    override fun setAntropometricInfo(antropometricInfo: AntropometricInfoEntity) {}
 }
