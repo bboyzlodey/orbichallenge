@@ -42,7 +42,6 @@ fun Routing.getAntropometricInfo(): Route = get(Const.GET_ANTROPOMETRIC_INFO_POI
 
 fun Routing.putChallenge(): Route = put("/challenge", body = {
     val newChallenge = call.receive<Challenge>()
-    val allChallenges = challengeRepository.getChallenges()
     challengeRepository.putChallenge(newChallenge)
     call.respond(status = HttpStatusCode.OK, "OK")
 })

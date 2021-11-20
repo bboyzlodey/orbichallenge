@@ -23,7 +23,7 @@ class StepRecordRepository : IStepRecordRepository {
         }
     }
 
-    override suspend fun getStepRecords(profileId: String): List<StepRecordEntity> {
+    override suspend fun getStepRecords(profileId: String, limit: Int, offset: Int): List<StepRecordEntity> {
         return transaction {
             StepRecords.select { (StepRecords.userId eq profileId) }
                 .map {
