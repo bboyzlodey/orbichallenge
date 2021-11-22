@@ -1,2 +1,4 @@
 rootProject.name = "ORBI Challenge"
 include ':app'
+ include ':shared'
+project(":shared").projectDir = file("../shared")
