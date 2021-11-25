@@ -1,3 +1,5 @@
 package client.business.model
 
-data class StepRecordBusiness(val id: String, val stepsCount: Int, val date: String)
+import kotlinx.datetime.LocalDateTime
+
+data class StepRecordBusiness(val id: String, val stepsCount: Int, val date: LocalDateTime)
