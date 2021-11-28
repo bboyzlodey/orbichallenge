@@ -4,6 +4,7 @@ import data.models.AntropometricInfo
 import data.models.Challenge
 import data.models.Profile
 import data.models.StepRecord
+import data.response.GetStepRecordsResponse
 import io.ktor.client.*
 import io.ktor.client.engine.*
 import io.ktor.client.features.json.*
@@ -27,7 +28,7 @@ class ServerApiClient : ServerApi {
         engine { proxy = ProxyBuilder.http(Const.TEST_SERVER_HOST) }
     }
 
-    override suspend fun getStepRecords(): List<StepRecord> {
+    override suspend fun getStepRecords(): GetStepRecordsResponse {
         return client.get(Const.GET_STEP_RECORDS_POINT)
     }
 

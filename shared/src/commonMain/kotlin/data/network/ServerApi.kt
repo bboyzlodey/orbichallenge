@@ -4,10 +4,11 @@ import data.models.AntropometricInfo
 import data.models.Challenge
 import data.models.Profile
 import data.models.StepRecord
+import data.response.GetStepRecordsResponse
 
 interface ServerApi {
 
-    suspend fun getStepRecords(): List<StepRecord>
+    suspend fun getStepRecords(): GetStepRecordsResponse
 
     suspend fun getChallenges(): List<Challenge>
 
