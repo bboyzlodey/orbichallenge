@@ -51,6 +51,7 @@ kotlin {
                 implementation ("io.ktor:ktor-client-okhttp:$ktor_version")
                 implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:$serialization_version")
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.2")
+                implementation("org.kodein.di:kodein-di:7.9.0")
             }
         }
     }
