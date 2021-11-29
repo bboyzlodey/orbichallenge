@@ -48,7 +48,7 @@ kotlin {
         val jvmTest by getting
         val androidMain by getting {
             dependencies {
-                // TODO: add ktor engine
+                implementation ("io.ktor:ktor-client-okhttp:$ktor_version")
                 implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:$serialization_version")
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.2")
             }
