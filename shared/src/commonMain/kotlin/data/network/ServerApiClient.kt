@@ -1,5 +1,6 @@
 package data.network
 
+import client.core.IJWTStorage
 import data.models.AntropometricInfo
 import data.models.Challenge
 import data.models.Profile
@@ -14,7 +15,7 @@ import io.ktor.client.request.*
 import io.ktor.http.*
 import utils.Const
 
-class ServerApiClient : ServerApi {
+class ServerApiClient(private val tokenStorage: IJWTStorage) : ServerApi {
 
     private val client = HttpClient {
         install(JsonFeature) {
