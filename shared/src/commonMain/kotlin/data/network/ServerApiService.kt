@@ -39,6 +39,6 @@ class ServerApiService(private val serverApi: ServerApi) {
     fun logout(): Flow<Any?> =
         flow { emit(serverApi.logout()) }
 
-    fun signInWithGoogle(): Flow<Any?> =
-        flow { emit(serverApi.signInWithGoogle()) }
+//    fun signInWithGoogle(): Flow<Any?> =
+//        flow { emit(serverApi.signInWithGoogle()) }
 }

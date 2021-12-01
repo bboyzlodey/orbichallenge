@@ -5,6 +5,7 @@ import data.models.AntropometricInfo
 import data.models.Challenge
 import data.models.Profile
 import data.models.StepRecord
+import data.request.SignWithGoogleRequest
 import data.response.GetStepRecordsResponse
 import io.ktor.client.*
 import io.ktor.client.engine.*
@@ -83,9 +84,10 @@ class ServerApiClient(private val tokenStorage: IJWTStorage) : ServerApi {
         }
     }
 
-    override suspend fun signInWithGoogle(): Any? {
-        return client.get {
+    override suspend fun signInWithGoogle(googleToken: String): String {
+        return client.post {
             this.method = HttpMethod(Const.SIGN_IN_WITH_GOOGLE_POINT)
+            body = SignWithGoogleRequest(googleToken)
         }
     }
 }

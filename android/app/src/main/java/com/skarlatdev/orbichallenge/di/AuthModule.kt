@@ -22,7 +22,8 @@ class AuthModule {
         return Google(
             jwtStorage,
             { it?.let { error -> Timber.e(error) } },
-            context as AppCompatActivity
+            context as AppCompatActivity,
+            data.network.ServerApiClient(jwtStorage)
         )
     }
 }

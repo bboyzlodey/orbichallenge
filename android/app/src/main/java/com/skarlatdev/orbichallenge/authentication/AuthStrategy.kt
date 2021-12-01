@@ -10,6 +10,10 @@ import client.core.IJWTStorage
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import timber.log.Timber
 import javax.inject.Inject
 
@@ -34,10 +38,12 @@ sealed class AuthStrategy(
 class Google @Inject constructor(
     jwtStorage: IJWTStorage,
     errorHandler: (Throwable?) -> Unit,
-    activity: AppCompatActivity
+    activity: AppCompatActivity,
+    private val serverApiClient: data.network.ServerApiClient
 ) : AuthStrategy(jwtStorage, errorHandler) {
-    private val clientId = "1009427048381-mamgtjis588hcp30jclucilrsasqorpm.apps.googleusercontent.com"
-    
+    private val clientId =
+        "1009427048381-mamgtjis588hcp30jclucilrsasqorpm.apps.googleusercontent.com"
+
     private val gso
         get() = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestProfile()
@@ -75,7 +81,17 @@ class Google @Inject constructor(
         }
     ) { result ->
         Timber.d("onActivityResult $result")
-        result?.let { jwtStorage.updateToken(result) }
+        result?.let {
+            GlobalScope.launch(client.core.Dispatchers.IO) {
+                kotlin.runCatching {
+                    val jwtToken = serverApiClient.signInWithGoogle(result)
+                    Timber.d("jwt token is ${jwtToken}")
+                    withContext(Dispatchers.Main) {
+                        jwtStorage.updateToken(jwtToken)
+                    }
+                }
+            }
+        }
     }
 
     override fun authenticate(bundle: Bundle) {

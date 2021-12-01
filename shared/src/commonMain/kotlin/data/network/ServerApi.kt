@@ -26,5 +26,5 @@ interface ServerApi {
 
     suspend fun logout(): Any?
 
-    suspend fun signInWithGoogle(): Any?
+    suspend fun signInWithGoogle(googleToken: String): String?
 }
