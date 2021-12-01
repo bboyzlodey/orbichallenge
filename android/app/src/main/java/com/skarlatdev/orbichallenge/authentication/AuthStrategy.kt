@@ -36,11 +36,14 @@ class Google @Inject constructor(
     errorHandler: (Throwable?) -> Unit,
     activity: AppCompatActivity
 ) : AuthStrategy(jwtStorage, errorHandler) {
+    private val clientId = "1009427048381-mamgtjis588hcp30jclucilrsasqorpm.apps.googleusercontent.com"
+    
     private val gso
         get() = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestProfile()
             .requestEmail()
             .requestId()
+            .requestIdToken(clientId)
             .requestProfile()
             .build()
 
@@ -64,6 +67,8 @@ class Google @Inject constructor(
                         errorHandler.invoke(e)
                     }
                 }
+                val task = GoogleSignIn.getSignedInAccountFromIntent(intent)
+                errorHandler.invoke(task.exception)
                 return null
             }
 

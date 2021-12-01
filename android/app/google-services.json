@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1009427048381",
+    "project_id": "orbi-challenge",
+    "storage_bucket": "orbi-challenge.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1009427048381:android:6f665a73a197e3e75494d4",
+        "android_client_info": {
+          "package_name": "com.skarlatdev.orbichallenge"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1009427048381-lf26vndpgdjquag7hbk15jf0a5pg4di1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.skarlatdev.orbichallenge",
+            "certificate_hash": "1e6ca1ce0a0936d5423dc26f34eee3a44e9f2da6"
+          }
+        },
+        {
+          "client_id": "1009427048381-mamgtjis588hcp30jclucilrsasqorpm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC8Zn0YuDpV4_C8z-tmepYCQqmLo2mhENA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1009427048381-mamgtjis588hcp30jclucilrsasqorpm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
