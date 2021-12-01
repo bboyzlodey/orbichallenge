@@ -4,6 +4,7 @@ import data.models.AntropometricInfo
 import data.models.Challenge
 import data.models.Profile
 import data.models.StepRecord
+import data.response.GetStepRecordsResponse
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -11,7 +12,7 @@ import kotlinx.coroutines.flow.flowOn
 
 class ServerApiService(private val serverApi: ServerApi) {
 
-    fun getStepRecords(): Flow<List<StepRecord>> =
+    fun getStepRecords(): Flow<GetStepRecordsResponse> =
         flow { emit(serverApi.getStepRecords()) }
 
     fun getChallenges(): Flow<List<Challenge>> =
