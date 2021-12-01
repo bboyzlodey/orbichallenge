@@ -13,5 +13,5 @@ class JWTStorage @Inject constructor(@ApplicationContext context: Context) : IJW
 
     override fun clearToken() = settings.edit().clear().apply()
 
-    override fun updateToken(token: String) = settings.edit().putString("jwt", token)
+    override fun updateToken(token: String) = settings.edit().putString("jwt", token).apply()
 }
