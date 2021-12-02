@@ -1,3 +1,3 @@
-rootProject.name = "com.example.ktor-orbi-challege"
+rootProject.name = "com.skarlatdev.orbichallenge"
 include(":shared")
 project(":shared").projectDir = file("../shared")

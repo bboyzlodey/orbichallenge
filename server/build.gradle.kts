@@ -1,5 +1,3 @@
-import java.util.regex.Pattern.compile
-
 val ktor_version: String by project
 val kotlin_version: String by project
 val logback_version: String by project
@@ -47,4 +45,7 @@ dependencies {
     implementation("org.jetbrains.exposed:exposed-core:$exposedVersion")
     implementation("org.jetbrains.exposed:exposed-dao:$exposedVersion")
     implementation("org.jetbrains.exposed:exposed-jdbc:$exposedVersion")
+
+    // Firebase Admin SDK
+    implementation ("com.google.firebase:firebase-admin:8.1.0")
 }

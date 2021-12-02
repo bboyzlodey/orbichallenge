@@ -4,7 +4,7 @@ import org.jetbrains.exposed.sql.Table
 import utils.Const
 
 object Users : Table("users") {
-    val id = varchar("id", 25)
+    val id = uuid("id")
     val firstName = varchar("firstName", 30)
     val secondName = varchar("secondName", 30)
     val email = varchar("email", 30)
