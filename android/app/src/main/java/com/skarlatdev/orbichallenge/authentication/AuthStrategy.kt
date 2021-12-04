@@ -89,7 +89,7 @@ class Google @Inject constructor(
                     withContext(Dispatchers.Main) {
                         jwtStorage.updateToken(jwtToken)
                     }
-                }
+                }.exceptionOrNull()?.let { Timber.e(it) }
             }
         }
     }
