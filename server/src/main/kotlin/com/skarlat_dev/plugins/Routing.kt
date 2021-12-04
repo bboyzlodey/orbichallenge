@@ -5,6 +5,8 @@ import com.skarlat_dev.domain.repository.ChallengeRepository
 import com.skarlat_dev.domain.repository.IChallengesRepository
 import com.skarlat_dev.utils.MockHelper
 import data.models.Challenge
+import data.request.GetStepRecordsRequest
+import data.request.SignWithGoogleRequest
 import io.ktor.application.*
 import io.ktor.http.*
 import io.ktor.request.*
@@ -19,6 +21,7 @@ fun Application.configureRouting() {
         getProfile()
         getAntropometricInfo()
         putChallenge()
+        signInWithGoogle()
     }
 }
 
@@ -44,4 +47,15 @@ fun Routing.putChallenge(): Route = put("/challenge", body = {
     val newChallenge = call.receive<Challenge>()
     challengeRepository.putChallenge(newChallenge)
     call.respond(status = HttpStatusCode.OK, "OK")
+})
+
+private val authInteractor = AuthInteractor(
+    profileConverter = ProfileConverter(),
+    profileRepository = ProfileRepository()
+)
+
+fun Routing.signInWithGoogle(): Route = post(Const.SIGN_IN_WITH_GOOGLE_POINT, body = {
+    val request = call.receive<SignWithGoogleRequest>()
+    val token = authInteractor.authenticateByGoogleToken(request.token)
+    call.respond(status = HttpStatusCode.OK, message = token)
 })
