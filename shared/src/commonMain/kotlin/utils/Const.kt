@@ -1,7 +1,7 @@
 package utils
 
 object Const {
-    const val TEST_SERVER_HOST = "http://localhost:8080"
+    const val TEST_SERVER_HOST = "http://0.0.0.0:8080"
     const val PROD_SERVER_HOST = "TO DO"
     const val GET_STEP_RECORDS_POINT = "/stepRecords"
     const val GET_STEP_RECORD_POINT = "/stepRecord"
