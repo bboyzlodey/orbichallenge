@@ -18,16 +18,18 @@ import utils.Const
 
 class ServerApiClient(private val tokenStorage: IJWTStorage) : ServerApi {
 
-    private val client = HttpClient {
-        install(JsonFeature) {
-            acceptContentTypes = listOf(ContentType.Application.Json)
-            serializer = KotlinxSerializer()
+    private val client by lazy {
+        HttpClient {
+            install(JsonFeature) {
+                acceptContentTypes = listOf(ContentType.Application.Json)
+                serializer = KotlinxSerializer()
+            }
+            install(Logging) {
+                logger = Logger.SIMPLE
+                level = LogLevel.BODY
+            }
+            engine { proxy = ProxyBuilder.http(Const.TEST_SERVER_HOST) }
         }
-        install(Logging) {
-            logger = Logger.SIMPLE
-            level = LogLevel.BODY
-        }
-        engine { proxy = ProxyBuilder.http(Const.TEST_SERVER_HOST) }
     }
 
     override suspend fun getStepRecords(): GetStepRecordsResponse {
