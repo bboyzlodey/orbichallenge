@@ -24,10 +24,6 @@ class ServerApiClient(private val tokenStorage: IJWTStorage) : ServerApi {
                 acceptContentTypes = listOf(ContentType.Application.Json)
                 serializer = KotlinxSerializer()
             }
-            install(Logging) {
-                logger = Logger.SIMPLE
-                level = LogLevel.BODY
-            }
             engine { proxy = ProxyBuilder.http(Const.TEST_SERVER_HOST) }
         }
     }
@@ -89,7 +85,7 @@ class ServerApiClient(private val tokenStorage: IJWTStorage) : ServerApi {
     override suspend fun signInWithGoogle(googleToken: String): String {
         return client.post {
             this.method = HttpMethod(Const.SIGN_IN_WITH_GOOGLE_POINT)
-            body = SignWithGoogleRequest(googleToken)
+            body = """{"token": "$googleToken"}"""
         }
     }
 }
