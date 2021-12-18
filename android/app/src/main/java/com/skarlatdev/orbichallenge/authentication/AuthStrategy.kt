@@ -36,7 +36,7 @@ sealed class AuthStrategy(
 }
 
 class Google @Inject constructor(
-    jwtStorage: IJWTStorage,
+    private val jwtStorage: IJWTStorage,
     errorHandler: (Throwable?) -> Unit,
     activity: AppCompatActivity,
     private val serverApiClient: data.network.ServerApiClient
@@ -81,16 +81,18 @@ class Google @Inject constructor(
         }
     ) { result ->
         Timber.d("onActivityResult $result")
-        result?.let {
-            GlobalScope.launch(client.core.Dispatchers.IO) {
-                kotlin.runCatching {
-                    val jwtToken = serverApiClient.signInWithGoogle(result)
-                    Timber.d("jwt token is ${jwtToken}")
-                    withContext(Dispatchers.Main) {
-                        jwtStorage.updateToken(jwtToken)
-                    }
-                }.exceptionOrNull()?.let { Timber.e(it) }
-            }
+        sendGoogleAuthToken(result ?: return@registerForActivityResult)
+    }
+
+    private fun sendGoogleAuthToken(token: String) {
+        GlobalScope.launch(client.core.Dispatchers.IO) {
+            kotlin.runCatching {
+                val jwtToken = serverApiClient.signInWithGoogle(token)
+                Timber.d("jwt token is ${jwtToken}")
+                withContext(Dispatchers.Main) {
+                    jwtStorage.updateToken(jwtToken)
+                }
+            }.exceptionOrNull()?.let { Timber.e(it) }
         }
     }
 
