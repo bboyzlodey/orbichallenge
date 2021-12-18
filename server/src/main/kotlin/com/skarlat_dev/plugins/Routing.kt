@@ -1,8 +1,11 @@
 package com.skarlat_dev.plugins
 
 import com.skarlat_dev.domain.converters.ChallengeConverter
+import com.skarlat_dev.domain.converters.ProfileConverter
+import com.skarlat_dev.domain.interactor.AuthInteractor
 import com.skarlat_dev.domain.repository.ChallengeRepository
 import com.skarlat_dev.domain.repository.IChallengesRepository
+import com.skarlat_dev.domain.repository.ProfileRepository
 import com.skarlat_dev.utils.MockHelper
 import data.models.Challenge
 import data.request.GetStepRecordsRequest

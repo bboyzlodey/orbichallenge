@@ -1,7 +1,7 @@
 plugins {
     id("com.android.library")
-    kotlin("multiplatform") //version "1.5.31"
-    kotlin("plugin.serialization") version "1.5.31"
+    kotlin("multiplatform")
+    kotlin("plugin.serialization")
 }
 
 repositories {
